@@ -35,6 +35,25 @@ export const getTasks = async (req, res) => {
   }
 };
 
+
+// Filtrar tareas por estado (por hacer / en progreso / completada)
+export const getTasksByStatus = async (req, res) => {
+  try {
+    const user_id = req.user.id;
+    const { status } = req.params;
+
+    const result = await pool.query(
+      'SELECT * FROM tasks WHERE user_id = $1 AND status = $2 ORDER BY created_at DESC',
+      [user_id, status]
+    );
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al filtrar tareas por estado' });
+  }
+};
+
 // Cambiar estado
 export const updateStatus = async (req, res) => {
   try {
