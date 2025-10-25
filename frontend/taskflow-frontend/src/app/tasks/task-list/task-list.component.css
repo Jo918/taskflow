@@ -1,0 +1,140 @@
+.tasks-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filters select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+}
+
+li strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+li small {
+  display: block;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+select {
+  padding: 6px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 0.5rem;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .tasks-container {
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-header .priority {
+  color: #777;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

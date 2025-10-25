@@ -1,1 +1,25 @@
-<p>task-form works!</p>
+<div class="task-form-container">
+  <h2>Nueva tarea</h2>
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <label>Título</label>
+    <input type="text" formControlName="title" placeholder="Ej: Implementar login" />
+
+    <label>Descripción</label>
+    <textarea formControlName="description" rows="3" placeholder="Detalles de la tarea"></textarea>
+
+    <label>Prioridad</label>
+    <select formControlName="priority">
+      <option value="alta">Alta</option>
+      <option value="media">Media</option>
+      <option value="baja">Baja</option>
+    </select>
+
+    <button type="submit" [disabled]="taskForm.invalid">Guardar</button>
+  </form>
+
+  <p *ngIf="message" style="color:green;">{{ message }}</p>
+  <p *ngIf="error" style="color:red;">{{ error }}</p>
+
+  <p><a routerLink="/tasks">← Volver al listado</a></p>
+</div>

@@ -1,1 +1,44 @@
-<p>task-list works!</p>
+<div class="tasks-container">
+  <h2>Mis tareas</h2>
+
+  <p *ngIf="message" class="success">{{ message }}</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <div class="filters">
+    <select [(ngModel)]="filter" (change)="applyFilter()">
+      <option value="all">Todas</option>
+      <option value="por hacer">Por hacer</option>
+      <option value="en progreso">En progreso</option>
+      <option value="completada">Completadas</option>
+    </select>
+  </div>
+
+  <button routerLink="/tasks/new">+ Nueva tarea</button>
+
+  <ul *ngIf="!loading">
+    <li *ngFor="let task of paginatedTasks">
+      <div class="task-header">
+        <strong>{{ task.title }}</strong>
+        <span class="priority">({{ task.priority }})</span>
+      </div>
+      <small>{{ task.description }}</small><br>
+
+      <select [(ngModel)]="task.status" (change)="changeStatus(task.id, task.status)">
+        <option value="por hacer">Por hacer</option>
+        <option value="en progreso">En progreso</option>
+        <option value="completada">Completada</option>
+      </select>
+
+      <button (click)="deleteTask(task.id)">🗑 Eliminar</button>
+    </li>
+  </ul>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+    <span>Página {{ page }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+  </div>
+
+  <p *ngIf="loading">Cargando tareas...</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+</div>
