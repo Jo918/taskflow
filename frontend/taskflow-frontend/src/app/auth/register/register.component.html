@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="register-container">
+  <h2>Crear cuenta</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label>Nombre</label>
+    <input type="text" formControlName="name" placeholder="Tu nombre completo" />
+
+    <label>Correo electrónico</label>
+    <input type="email" formControlName="email" placeholder="usuario@correo.com" />
+
+    <label>Contraseña</label>
+    <input type="password" formControlName="password" placeholder="••••••" />
+
+    <button type="submit" [disabled]="registerForm.invalid">Registrarse</button>
+  </form>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+  <p *ngIf="success" class="success">{{ success }}</p>
+
+  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+</div>
