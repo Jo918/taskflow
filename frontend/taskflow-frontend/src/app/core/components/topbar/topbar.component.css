@@ -1,0 +1,46 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.link {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.user button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background: #e74c3c;
+  color: white;
+  cursor: pointer;
+}
+
+.user button:hover {
+  opacity: 0.9;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

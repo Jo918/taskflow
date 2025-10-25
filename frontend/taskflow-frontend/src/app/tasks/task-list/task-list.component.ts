@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TaskService } from '../../core/services/task.service';
+import { TopbarComponent } from '../../core/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, TopbarComponent],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
 })

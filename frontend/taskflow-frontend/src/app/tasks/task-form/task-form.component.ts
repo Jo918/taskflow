@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { TaskService } from '../../core/services/task.service';
+import { TopbarComponent } from '../../core/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TopbarComponent],
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css']
 })

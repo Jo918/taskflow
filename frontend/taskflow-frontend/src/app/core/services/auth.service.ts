@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -9,11 +9,24 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({ Authorization: `Bearer ${token}` });
+  }
+
   login(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, data);
   }
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, data);
+  }
+
+  me(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/me`, { headers: this.getAuthHeaders() });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
   }
 }

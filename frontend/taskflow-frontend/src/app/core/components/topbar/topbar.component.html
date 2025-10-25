@@ -1,0 +1,22 @@
+<header class="topbar">
+  <div class="brand" routerLink="/tasks"><span>TaskFlow</span></div>
+  <div class="spacer"></div>
+
+  <div class="user" *ngIf="user">
+    <span (click)="toggleProfile()" class="user-link">
+      👤 {{ user.name }}
+    </span>
+    <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+  </div>
+
+  <!-- Ventana emergente -->
+  <div class="modal-backdrop" *ngIf="showProfile" (click)="toggleProfile()"></div>
+  <div class="modal fade-in" *ngIf="showProfile">
+    <h3>👤 Perfil de Usuario</h3>
+    <div class="profile-info">
+      <p><strong>Nombre:</strong> {{ user.name }}</p>
+      <p><strong>Correo:</strong> {{ user.email }}</p>
+    </div>
+    <button class="close-btn" (click)="toggleProfile()">Cerrar</button>
+  </div>
+</header>
