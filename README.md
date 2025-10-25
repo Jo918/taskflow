@@ -12,11 +12,13 @@ Incluye autenticación JWT, manejo de usuarios, CRUD de tareas, protección de r
 - Node.js v18 o superior
 - PostgreSQL instalado y corriendo en localhost
 - npm o yarn
+- Angular CLI instalado globalmente
 
 ---
 
 ## Estructura del proyecto
 
+### Backend
 ```
 backend/
  ├── src/
@@ -38,6 +40,38 @@ backend/
  └── README.md
 ```
 
+### Frontend
+```
+frontend/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── dashboard/
+│   │   │   ├── tasks/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   └── register/
+│   │   │   └── shared/
+│   │   ├── services/
+│   │   │   ├── auth.service.ts
+│   │   │   ├── task.service.ts
+│   │   │   └── user.service.ts
+│   │   ├── models/
+│   │   │   ├── task.model.ts
+│   │   │   └── user.model.ts
+│   │   ├── guards/
+│   │   │   └── auth.guard.ts
+│   │   └── interceptors/
+│   │       └── token.interceptor.ts
+│   ├── assets/
+│   ├── environments/
+│   │   ├── environment.ts
+│   │   └── environment.prod.ts
+│   └── styles/
+├── angular.json
+└── package.json
+```
+
 ---
 
 ## Variables de entorno (.env)
@@ -54,6 +88,8 @@ CORS_ORIGIN=http://localhost:4200
 
 ## Instalación y ejecución
 
+### Backend
+
 1. Clonar el repositorio.
 2. Entrar en la carpeta del backend:
 
@@ -67,7 +103,7 @@ CORS_ORIGIN=http://localhost:4200
    npm install
    ```
 
-4. Crear las tablas iniciales (users y tasks):
+4. Crear las tablas iniciales (users y tasks) y sus registros de prueba:
 
    ```
    node src/db/init.js
@@ -81,6 +117,33 @@ CORS_ORIGIN=http://localhost:4200
 
 El backend se ejecutará en:
 http://localhost:4000
+
+
+### Variables de Entorno Frontend
+Configura las siguientes variables en `src/environments/environment.ts`:
+
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:4000/api'
+};
+```
+
+### Frontend
+1. Navega al directorio del frontend:
+```bash
+cd frontend
+```
+
+2. Instala las dependencias:
+```bash
+npm install
+```
+
+3. Ejecuta el servidor de desarrollo:
+```bash
+ng serve
+```
 
 ---
 
@@ -147,7 +210,7 @@ Ejemplo:
 GET /api/tasks/status/completada
 ```
 
-**PUT /api/tasks/status**
+**PUT /api/tasks/**
 Actualiza el estado de una tarea.
 Body:
 ```
